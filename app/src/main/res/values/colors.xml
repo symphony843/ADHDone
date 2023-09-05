@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!-- colour theme for this project -->
+    <color name="seasalt">#F8F9FB</color>
+    <color name="alice_blue">#E1ECF7</color>
+    <color name="powder_blue">#AECBEB</color>
+    <color name="ruddy_blue">#83B0E1</color>
+    <color name="dark_ruddy_blue">#71A5DE</color>
+    <color name="steel_blue">#3982D0</color>
+</resources>

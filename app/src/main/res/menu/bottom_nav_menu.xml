@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"> -->
+    <item
+        android:id="@+id/task"
+        android:icon="@drawable/ic_checkbox_outline"
+        android:title="@string/todo"
+        android:enabled="true"/>
+    <item
+        android:id="@+id/calendar"
+        android:icon="@drawable/ic_calendar_clock"
+        android:title="@string/calendar"
+        android:enabled="true"/>
+    <item
+        android:id="@+id/stats"
+        android:icon="@drawable/ic_chart_line"
+        android:title="@string/stats"
+        android:enabled="true"/>
+    <item
+        android:id="@+id/options"
+        android:icon="@drawable/ic_dots_vertical"
+        android:title="@string/options"
+        android:enabled="true"/>
+</menu>
