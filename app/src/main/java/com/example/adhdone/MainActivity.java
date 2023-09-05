@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new TaskFragment());
                     return true;
                 }
+                if (id == R.id.calendar) {
+                    replaceFragment(new CalendarFragment());
+                    return true;
+                }
                 return true;
             }
         });

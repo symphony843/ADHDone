@@ -24,10 +24,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         this.tasks = tasks;
     }
 
-    public TaskAdapter(ArrayList<Task> tasks) {
-        this.tasks = tasks;
-    }
-
     @NonNull
     @Override
     public TaskAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
