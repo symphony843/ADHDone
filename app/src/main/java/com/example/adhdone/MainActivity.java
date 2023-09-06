@@ -37,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new CalendarFragment());
                     return true;
                 }
+                if (id == R.id.stats) {
+                    replaceFragment(new StatsFragment());
+                    return true;
+                }
+                if (id == R.id.options) {
+                    replaceFragment(new OptionsFragment());
+                    return true;
+                }
                 return true;
             }
         });
@@ -46,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                replaceFragment(new NewTaskFragment());
             }
         });
     }
