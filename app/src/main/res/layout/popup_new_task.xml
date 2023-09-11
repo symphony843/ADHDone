@@ -23,7 +23,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
@@ -33,12 +33,12 @@
         android:text="@string/save"
         android:backgroundTint="@color/steel_blue"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/button_cancel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="41dp"
@@ -49,7 +49,7 @@
         android:backgroundTint="@color/steel_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/button_save"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
     <ImageButton

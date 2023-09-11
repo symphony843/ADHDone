@@ -2,26 +2,32 @@ package com.example.adhdone;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.PopupWindow;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
+    CoordinatorLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        layout = findViewById(R.id.coordinatorLayout);
 
         // Manage the selection of the bottom navigation options
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
@@ -54,10 +60,26 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragment(new NewTaskFragment());
+                // replaceFragment(new NewTaskPopUp());
+                createPopUp();
             }
         });
     }
+private  void createPopUp() {
+    LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+    View popupView = inflater.inflate(R.layout.popup_new_task, null);
+
+    int width = ViewGroup.LayoutParams.MATCH_PARENT;
+    int height = ViewGroup.LayoutParams.WRAP_CONTENT;
+    boolean focusable = false;
+    PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+    layout.post(new Runnable() {
+        @Override
+        public void run() {
+            popupWindow.showAtLocation(layout, Gravity.BOTTOM,0,0);
+        }
+    });
+}
 
     private  void replaceFragment (Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
