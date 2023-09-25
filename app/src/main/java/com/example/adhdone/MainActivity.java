@@ -2,6 +2,7 @@ package com.example.adhdone;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.PopupWindow;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 private  void createPopUp() {
     LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
     View popupView = inflater.inflate(R.layout.popup_new_task, null);
+    Button cancelPopup = (Button) findViewById(R.id.button_cancel);
 
     int width = ViewGroup.LayoutParams.MATCH_PARENT;
     int height = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -77,6 +80,13 @@ private  void createPopUp() {
         @Override
         public void run() {
             popupWindow.showAtLocation(layout, Gravity.BOTTOM,0,0);
+        }
+    });
+
+    cancelPopup.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popupWindow.dismiss();
         }
     });
 }
