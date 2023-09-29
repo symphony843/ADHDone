@@ -1,10 +1,9 @@
 package com.example.adhdone;
 
-import java.util.ArrayList;
-
 public class Task {
     private int taskId;
     private int iconId;
+    private int tabId;
     private String description;
     private String comments;
     private String createDate;
@@ -13,9 +12,10 @@ public class Task {
     private boolean active;
     private int priority;
 
-    public Task(int taskId, int iconId, String description, String comments, String createDate, String startDate, String completeDate, boolean active, int priority) {
+    public Task(int taskId, int iconId, int tabId, String description, String comments, String createDate, String startDate, String completeDate, boolean active, int priority) {
         this.taskId = taskId;
         this.iconId = iconId;
+        this.tabId = tabId;
         this.description = description;
         this.comments = comments;
         this.createDate = createDate;
@@ -97,11 +97,20 @@ public class Task {
         this.priority = priority;
     }
 
+    public int getTabId() {
+        return tabId;
+    }
+
+    public void setTabId(int tabId) {
+        this.tabId = tabId;
+    }
+
     @Override
     public String toString() {
-        return "TodoItem{" +
-                "itemId=" + taskId +
+        return "Task{" +
+                "taskId=" + taskId +
                 ", iconId=" + iconId +
+                ", kanbanId=" + tabId +
                 ", description='" + description + '\'' +
                 ", comments='" + comments + '\'' +
                 ", createDate='" + createDate + '\'' +

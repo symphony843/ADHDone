@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLanes"
+        android:id="@+id/tabLayout"
         android:layout_width="729dp"
         android:layout_height="wrap_content"
         app:tabGravity="fill"
@@ -47,8 +47,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerTasks"
-        android:layout_width="384px"
+        android:layout_width="match_parent"
         android:layout_height="361dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLanes" />
+        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
