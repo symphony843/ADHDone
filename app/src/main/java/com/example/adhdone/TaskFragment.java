@@ -31,8 +31,9 @@ public class TaskFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        ArrayList<Task> tasks = createTaskList(10);
+        ArrayList<Task> allTasks = createTaskList(10);
         ArrayList<Tab> tabs = createTabs(4);
+        ArrayList<Task> selectedTasks = new ArrayList<>();
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_task_list, parent, false);
@@ -42,12 +43,52 @@ public class TaskFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tabLayout);
         tabLayout.removeAllTabs();
         tabs.forEach((n) -> tabLayout.addTab(tabLayout.newTab().setText(n.getTabName())));
+        //int selectedTab = tabLayout.getSelectedTabPosition();
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                String selectedTab = tab.getText().toString();
+                selectedTasks.clear();
+
+                allTasks.forEach((n) -> {
+                    if(n.getTabName() == selectedTab) {
+                        selectedTasks.add(n);
+                    }
+
+                    // Create RecyclerView
+                    recyclerView = view.findViewById(R.id.recyclerTasks);
+
+                    TaskAdapter adapter = new TaskAdapter(view.getContext(),selectedTasks);
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                });
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
 
         // Create RecyclerView
-        recyclerView = view.findViewById(R.id.recyclerTasks);
-        TaskAdapter adapter = new TaskAdapter(view.getContext(),tasks);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        //recyclerView = view.findViewById(R.id.recyclerTasks);
+        //TaskAdapter adapter = new TaskAdapter(view.getContext(),allTasks);
+        //recyclerView.setAdapter(adapter);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+        //allTasks.forEach((n) -> {
+        //    if(n.getTabId() == selectedTab) {
+        //        selectedTasks.add(n);
+        //    }
+        //});
+
+        //TaskAdapter adapter = new TaskAdapter(view.getContext(),selectedTasks);
+        //recyclerView.setAdapter(adapter);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
         return view;
     }
@@ -59,8 +100,10 @@ public class TaskFragment extends Fragment {
         ArrayList<Task> tasks = new ArrayList<>();
 
         for (int i = 1; i <= numTasks; i++) {
-            int n = random.nextInt(3);
-            tasks.add(new Task(++lastTaskId,1,n, "Task" + lastTaskId," "," ", " ", " ",true,100));
+            int n = random.nextInt(3) + 1;
+            String str = Integer.toString(n);
+
+            tasks.add(new Task(++lastTaskId,1,str, "Task" + lastTaskId," "," ", " ", " ",true,100));
         }
 
         return tasks;

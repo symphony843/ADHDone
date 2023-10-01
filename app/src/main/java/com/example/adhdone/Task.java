@@ -3,7 +3,7 @@ package com.example.adhdone;
 public class Task {
     private int taskId;
     private int iconId;
-    private int tabId;
+    private String tabName;
     private String description;
     private String comments;
     private String createDate;
@@ -12,10 +12,10 @@ public class Task {
     private boolean active;
     private int priority;
 
-    public Task(int taskId, int iconId, int tabId, String description, String comments, String createDate, String startDate, String completeDate, boolean active, int priority) {
+    public Task(int taskId, int iconId, String tabName, String description, String comments, String createDate, String startDate, String completeDate, boolean active, int priority) {
         this.taskId = taskId;
         this.iconId = iconId;
-        this.tabId = tabId;
+        this.tabName = tabName;
         this.description = description;
         this.comments = comments;
         this.createDate = createDate;
@@ -97,12 +97,12 @@ public class Task {
         this.priority = priority;
     }
 
-    public int getTabId() {
-        return tabId;
+    public String getTabName() {
+        return tabName;
     }
 
-    public void setTabId(int tabId) {
-        this.tabId = tabId;
+    public void setTabName(String tabName) {
+        this.tabName = tabName;
     }
 
     @Override
@@ -110,7 +110,7 @@ public class Task {
         return "Task{" +
                 "taskId=" + taskId +
                 ", iconId=" + iconId +
-                ", kanbanId=" + tabId +
+                ", tabName='" + tabName + '\'' +
                 ", description='" + description + '\'' +
                 ", comments='" + comments + '\'' +
                 ", createDate='" + createDate + '\'' +
